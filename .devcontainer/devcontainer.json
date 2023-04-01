@@ -1,0 +1,21 @@
+{
+    "name": "beartrail",
+    "build": {
+        "dockerfile": "../Dockerfile"
+    },
+	"forwardPorts": [
+		3000,
+		3100,
+		3200,
+		4200
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"golang.go",
+				"ms-azuretools.vscode-docker",
+				"redhat.vscode-yaml"
+			]
+		}
+	}
+}
