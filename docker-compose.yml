@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    container_name: beartrail_app_dev
+    command: sleep infinity
+    volumes:
+      - .:/workspace
+  db:
+    restart: unless-stopped
+    image: cockroachdb/cockroach:latest
+    command: start-single-node --insecure
+    ports:
+        - "26257:26257"
+        - "8080:8080"
+    volumes:
+        - ./db/node_1:/cockroach/cockroach-data
