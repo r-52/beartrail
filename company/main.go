@@ -5,6 +5,7 @@ import (
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
+	"github.com/r-52/beartrail/company/db"
 )
 
 func main() {
@@ -14,5 +15,8 @@ func main() {
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("OK"))
 	})
+
+	db.Connect()
+
 	http.ListenAndServe(":3200", r)
 }
