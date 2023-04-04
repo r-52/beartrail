@@ -13,8 +13,8 @@ var (
 	Database *gorm.DB
 )
 
-func Connect()  {
-	dsn := "postgresql://bear@db:26257/bear_dev?sslmode=disable"
+func Connect() {
+	dsn := "postgresql://bear_company@db:26257/bear_company_dev?sslmode=disable"
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Info),
@@ -27,6 +27,6 @@ func Connect()  {
 	log.Println("connected")
 	db.Logger = logger.Default.LogMode(logger.Info)
 	log.Println("running migrations")
-	db.AutoMigrate(&models.Company{})
+	db.AutoMigrate(&models.Company{}, &models.CompanyUser{}, &models.CompanySetting{})
 	Database = db
 }
