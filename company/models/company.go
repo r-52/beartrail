@@ -3,7 +3,7 @@ package models
 import (
 	"database/sql"
 
-	"github.com/google/uuid"
+	"github.com/jaevor/go-nanoid"
 	"gorm.io/gorm"
 )
 
@@ -18,11 +18,14 @@ type Company struct {
 	CompanySetting   CompanySetting
 	CompanySettingID uint
 
-	RealmID uint
+	RealmID string
 }
 
 func (company *Company) BeforeCreate(tx *gorm.DB) (err error) {
-	uuid := uuid.New()
-	company.Ident = uuid.String()
+	uid, err := nanoid.Standard(21)
+	if err != nil {
+		panic(err)
+	}
+	company.Ident = uid()
 	return
 }
