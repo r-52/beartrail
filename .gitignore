@@ -1,5 +1,7 @@
 db/**/*
 
+*.http
+
 # Created by https://www.toptal.com/developers/gitignore/api/go,intellij+all,visualstudiocode,macos,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=go,intellij+all,visualstudiocode,macos,windows
 

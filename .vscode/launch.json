@@ -19,6 +19,14 @@
             "mode": "auto",
             "program": "${workspaceFolder}/company",
             "cwd": "${workspaceFolder}/company"
+        },
+        {
+            "name": "Launch realm",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/realm",
+            "cwd": "${workspaceFolder}/realm"
         }
     ]
 }

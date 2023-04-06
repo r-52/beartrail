@@ -16,7 +16,8 @@
 			"extensions": [
 				"golang.go",
 				"ms-azuretools.vscode-docker",
-				"redhat.vscode-yaml"
+				"redhat.vscode-yaml",
+				"humao.rest-client"
 			]
 		}
 	}
