@@ -27,4 +27,13 @@ func main() {
 func prepareDbAndMigrate() {
 	db.Connect()
 	db.Database.AutoMigrate(&models.Realm{})
+
+	localhost, err := models.GetRealmByHostname("localhost")
+	if err != nil {
+		localhost = models.Realm{
+			Hostname: "localhost",
+		}
+		db.Database.Create(&localhost)
+	}
+
 }

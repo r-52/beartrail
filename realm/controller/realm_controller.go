@@ -15,7 +15,11 @@ func GetRealm(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	realm := models.GetRealmByHostname(hostname)
+	realm, err := models.GetRealmByHostname(hostname)
+	if err != nil {
+		w.WriteHeader(404)
+		return
+	}
 
 	// respond to the client
 	render.JSON(w, r, realm)

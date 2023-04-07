@@ -9,9 +9,9 @@ import (
 )
 
 type Realm struct {
-	ID        string `gorm:"primaryKey"`
-	CreatedAt time.Time
-	Hostname  string `gorm:"index,unique"`
+	ID        string    `gorm:"primaryKey" json:"id"`
+	CreatedAt time.Time `json:"-"`
+	Hostname  string    `gorm:"index,unique" json:"hostname"`
 }
 
 func (realm *Realm) BeforeCreate(tx *gorm.DB) (err error) {
@@ -26,8 +26,8 @@ func (realm *Realm) BeforeCreate(tx *gorm.DB) (err error) {
 	return
 }
 
-func GetRealmByHostname(hostname string) Realm {
+func GetRealmByHostname(hostname string) (Realm, error) {
 	var realm Realm
-	db.Database.Where("hostname = ?", hostname).First(&realm)
-	return realm
+	result := db.Database.Where("hostname = ?", hostname).First(&realm)
+	return realm, result.Error
 }
